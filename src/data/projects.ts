@@ -3,10 +3,10 @@ import { Project } from "@/app/ProjectCard";
 export const projects: Project[] = [
   {
     id: 1,
-    name: "Task Manager CLI",
+    name: "Sea lion clicker",
     day: "Day 1",
-    description: "A command-line tool written in Go to manage daily tasks.",
-    projectUrl: "#",
+    description: "An app that spins a sea lion and each time you click on it, it gets faster and faster until it flies off the page",
+    projectUrl: "https://app-of-the-day.github.io/day-1-sea-lion/",
     youtubeUrl: "#",
   },
   {
