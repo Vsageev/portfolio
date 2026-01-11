@@ -152,14 +152,53 @@
   color: var(--accents-6);
 }
 
-.about h2 {
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--accents-2);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sectionHeader {
   color: var(--foreground);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .about p {
   margin-bottom: 1.5rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--accents-5);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.socialLink:hover {
+  color: var(--foreground);
+}
+
+.socialIcon {
+  flex-shrink: 0;
+  color: inherit;
 }
 
 @keyframes fadeIn {
