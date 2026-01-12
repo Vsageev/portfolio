@@ -7,6 +7,7 @@ export type Project = {
   description: string;
   projectUrl: string;
   youtubeUrl: string;
+  gifUrl: string;
 };
 
 type ProjectCardProps = {
@@ -23,6 +24,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.description}
         </p>
       </div>
+      {project.gifUrl && (
+        <div className={styles.gifContainer}>
+          <img src={project.gifUrl} alt={project.name} className={styles.gif} />
+        </div>
+      )}
       <div className={styles.cardActions}>
         <a href={project.projectUrl} className={`${styles.button} ${styles.primaryButton}`}>
           View Project
