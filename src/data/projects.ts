@@ -2,12 +2,20 @@ import { Project } from "@/app/ProjectCard";
 
 export const projects: Project[] = [
   {
+    id: 2,
+    name: "Lion *Egg*",
+    day: "Day 2",
+    description: "An app that changes swearing to a seal saying egg",
+    projectUrl: "https://vercel.com/vlads-projects-01a6fb8a/2-seal-bleep",
+    youtubeUrl: "https://youtube.com/shorts/4uH_WiF7Yxs",
+  },
+  {
     id: 1,
     name: "Sea lion clicker",
     day: "Day 1",
     description: "An app that spins a sea lion and each time you click on it, it gets faster and faster until it flies off the page",
     projectUrl: "https://app-of-the-day.github.io/day-1-sea-lion/",
-    youtubeUrl: "#",
+    youtubeUrl: "https://youtube.com/shorts/KRH_x6xR4nU",
   },
   {
     id: 0,
