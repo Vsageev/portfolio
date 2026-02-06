@@ -1,0 +1,149 @@
+/* ── Board container ───────────────────────────────────── */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 32px);
+  grid-template-rows: repeat(10, 32px);
+  gap: 2px;
+  justify-content: center;
+  padding: var(--space-md) 0 var(--space-sm);
+  user-select: none;
+}
+
+/* ── Stats row ─────────────────────────────────────────── */
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-bottom: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.stats span {
+  padding: 4px 10px;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Cell base ─────────────────────────────────────────── */
+
+.cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s ease, border-color 0.1s ease;
+  line-height: 1;
+  border: 1px solid var(--border);
+}
+
+/* ── Unrevealed cell ───────────────────────────────────── */
+
+.cellHidden {
+  background: var(--bg-hover);
+  border-color: var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.cellHidden:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+}
+
+/* ── Flagged cell ──────────────────────────────────────── */
+
+.cellFlagged {
+  background: var(--bg-hover);
+  border-color: var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cellFlagged:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+}
+
+/* ── Revealed cell ─────────────────────────────────────── */
+
+.cellRevealed {
+  background: var(--bg-card);
+  border-color: transparent;
+  cursor: default;
+}
+
+/* ── Mine cell (on loss) ──────────────────────────────── */
+
+.cellMine {
+  background: var(--error);
+  border-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  cursor: default;
+}
+
+/* ── Triggered mine (the one clicked) ─────────────────── */
+
+.cellMineTriggered {
+  background: var(--error);
+  border-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  cursor: default;
+  animation: mineShake 0.3s ease-out;
+}
+
+/* ── Correct flag (on loss reveal) ────────────────────── */
+
+.cellFlagCorrect {
+  background: var(--bg-hover);
+  border-color: var(--success);
+  font-size: 16px;
+  cursor: default;
+}
+
+/* ── Wrong flag (on loss reveal) ──────────────────────── */
+
+.cellFlagWrong {
+  background: var(--bg-hover);
+  border-color: var(--error);
+  font-size: 16px;
+  cursor: default;
+  text-decoration: line-through;
+}
+
+/* ── Number color classes ─────────────────────────────── */
+
+.num1 { color: var(--accent); }
+.num2 { color: var(--success); }
+.num3 { color: var(--error); }
+.num4 { color: #6c5ce7; }
+.num5 { color: var(--warning); }
+.num6 { color: var(--warning); }
+.num7 { color: var(--warning); }
+.num8 { color: var(--warning); }
+
+/* ── Mine shake animation ─────────────────────────────── */
+
+@keyframes mineShake {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* ── Board disabled state ─────────────────────────────── */
+
+.boardDisabled {
+  pointer-events: none;
+}

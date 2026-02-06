@@ -1,0 +1,58 @@
+/* Shared enemy base */
+.enemy,
+.enemyFast,
+.enemyWiggler,
+.enemyDasher {
+  position: fixed;
+  top: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+.enemy {
+  background: #e5484d;
+  box-shadow: 0 0 12px #e5484d, 0 0 24px rgba(229, 72, 77, 0.3);
+}
+
+.enemyFast {
+  background: #f5a623;
+  box-shadow: 0 0 12px #f5a623, 0 0 24px rgba(245, 166, 35, 0.3);
+}
+
+.enemyWiggler {
+  background: #6c5ce7;
+  box-shadow: 0 0 12px #6c5ce7, 0 0 24px rgba(108, 92, 231, 0.3);
+}
+
+.enemyDasher {
+  background: #0984e3;
+  box-shadow: 0 0 12px #0984e3, 0 0 24px rgba(9, 132, 227, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.enemyDasherCharging {
+  animation: dasherPulse 0.3s ease-in-out infinite alternate;
+}
+
+.enemyDasherDashing {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  left: -10px;
+  background: #74b9ff;
+  box-shadow: 0 0 20px #74b9ff, 0 0 40px rgba(116, 185, 255, 0.5);
+}
+
+@keyframes dasherPulse {
+  from {
+    box-shadow: 0 0 12px #0984e3, 0 0 24px rgba(9, 132, 227, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px #74b9ff, 0 0 40px rgba(116, 185, 255, 0.6);
+  }
+}

@@ -1,0 +1,14 @@
+.canvasWrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-sm) 0 var(--space-md);
+}
+
+.canvas {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: crosshair;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

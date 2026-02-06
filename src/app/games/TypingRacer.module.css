@@ -1,0 +1,317 @@
+/* ── Game Area ──────────────────────────────────────────── */
+
+.gameArea {
+  position: relative;
+  height: 400px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: var(--space-sm);
+}
+
+/* ── Score Bar ─────────────────────────────────────────── */
+
+.scoreBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+
+.scoreLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.scoreValue {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.goalValue {
+  color: var(--text-muted);
+}
+
+.progressTrack {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-hover);
+  border-radius: 100px;
+  margin: 0 var(--space-sm);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 100px;
+  transition: width 300ms ease-out;
+}
+
+.progressFillWin {
+  background: var(--success);
+}
+
+/* ── Falling Words ─────────────────────────────────────── */
+
+.wordContainer {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  bottom: 56px;
+  overflow: hidden;
+}
+
+.fallingWord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 150ms ease-out, border-color 150ms ease-out;
+  will-change: transform;
+}
+
+/* Point tier glow */
+.wordTier1 {
+  color: var(--text-secondary);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.03);
+}
+
+.wordTier2 {
+  color: var(--accent);
+  border-color: rgba(0, 112, 243, 0.2);
+  box-shadow: 0 0 8px rgba(0, 112, 243, 0.1);
+}
+
+.wordTier3 {
+  color: var(--warning);
+  border-color: rgba(245, 166, 35, 0.2);
+  box-shadow: 0 0 8px rgba(245, 166, 35, 0.12);
+}
+
+/* Matched word — rocket launch animation */
+.wordMatched {
+  animation: rocketLaunch 500ms ease-in forwards;
+}
+
+@keyframes rocketLaunch {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(0.6);
+  }
+}
+
+/* Word hit the bottom — flash red and fade */
+.wordMissed {
+  color: var(--error) !important;
+  border-color: var(--error) !important;
+  box-shadow: 0 0 8px rgba(229, 72, 77, 0.2) !important;
+  animation: missedFade 400ms ease-out forwards;
+}
+
+@keyframes missedFade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Rocket emoji trailing the matched word */
+.rocket {
+  position: absolute;
+  font-size: 16px;
+  pointer-events: none;
+  animation: rocketTrail 600ms ease-in forwards;
+  z-index: 5;
+}
+
+@keyframes rocketTrail {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-180px);
+  }
+}
+
+/* ── Input Area ────────────────────────────────────────── */
+
+.inputArea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  z-index: 10;
+}
+
+.typingInput {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--ease);
+}
+
+.typingInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+}
+
+.typingInput::placeholder {
+  color: var(--text-muted);
+}
+
+.typingInput:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Idle Overlay ──────────────────────────────────────── */
+
+.idleOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  z-index: 20;
+  background: var(--bg-elevated);
+}
+
+.idleIcon {
+  font-size: 32px;
+  margin-bottom: var(--space-xs);
+  color: var(--text-muted);
+}
+
+.idleTitle {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.idleHint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  text-align: center;
+  max-width: 300px;
+}
+
+.tierList {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.tierItem {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tierItem span {
+  font-weight: 500;
+}
+
+.tier1Color {
+  color: var(--text-secondary);
+}
+
+.tier2Color {
+  color: var(--accent);
+}
+
+.tier3Color {
+  color: var(--warning);
+}
+
+/* ── Ended Overlay ─────────────────────────────────────── */
+
+.endedOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.endedTitle {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.endedTitleWin {
+  color: var(--success);
+}
+
+.endedTitleLose {
+  color: var(--error);
+}
+
+.endedScore {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .gameArea {
+    height: 340px;
+  }
+
+  .tierList {
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: center;
+  }
+}

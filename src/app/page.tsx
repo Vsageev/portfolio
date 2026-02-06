@@ -1,16 +1,5 @@
-import { Layout } from "@/components/Layout";
-import { ProjectCard } from "@/app/ProjectCard";
-import { projects } from "@/data/projects";
-import styles from "./page.module.css";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <Layout activeTab="apprequest">
-      <div className={styles.grid}>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
-    </Layout>
-  );
+  redirect("/projects");
 }

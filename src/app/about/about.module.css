@@ -1,0 +1,64 @@
+.about {
+  max-width: 600px;
+  line-height: 1.75;
+}
+
+.section {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section h2 {
+  margin-bottom: var(--space-md);
+}
+
+.about p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.logosRow {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 14px;
+  color: var(--text-tertiary);
+  transition: color var(--ease-fast);
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  color: var(--text-primary);
+}
+
+.socialLink svg {
+  transition: transform var(--ease-fast);
+}
+
+.socialIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}

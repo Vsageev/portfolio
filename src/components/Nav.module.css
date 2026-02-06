@@ -1,0 +1,112 @@
+/* Prismatic top line — light mode only */
+.prismLine {
+  height: 2px;
+  background: var(--prism-gradient);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+}
+
+[data-theme="light"] .prismLine {
+  opacity: 1;
+}
+
+/* Nav bar */
+.nav {
+  position: fixed;
+  top: 2px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--ease), border-color var(--ease);
+}
+
+[data-theme="light"] .nav {
+  background: rgba(250, 250, 250, 0.8);
+}
+
+.navInner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left side: breadcrumb */
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navBreadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.portrait {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.navWordmark {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: color var(--ease);
+}
+
+.navSlash {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color var(--ease);
+}
+
+.navSection {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-tertiary);
+  transition: color var(--ease);
+}
+
+/* Right side: links + toggle */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color var(--ease-fast), background var(--ease-fast);
+}
+
+.navLink:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.navLinkActive {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}

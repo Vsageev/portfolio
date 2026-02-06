@@ -1,0 +1,119 @@
+/* ── Game Area ──────────────────────────────────────────── */
+
+.gameArea {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-md) 0 var(--space-sm);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  background-image:
+    radial-gradient(circle, var(--border) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 10px 10px;
+  position: relative;
+  outline: none;
+}
+
+/* ── Cells ─────────────────────────────────────────────── */
+
+.cell {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+/* ── Snake segments ────────────────────────────────────── */
+
+.snakeSegment {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  transition: background 80ms linear;
+}
+
+.snakeHead {
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 112, 243, 0.5);
+}
+
+/* Speed boost visual trail */
+.snakeSpeedBoost {
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.6), 0 0 16px rgba(0, 210, 255, 0.25);
+}
+
+/* ── Food ──────────────────────────────────────────────── */
+
+.food {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.foodRegular {
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(0, 200, 83, 0.5);
+}
+
+.foodGolden {
+  background: var(--warning);
+  box-shadow: 0 0 8px rgba(245, 166, 35, 0.6);
+  animation: goldenPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes goldenPulse {
+  from {
+    box-shadow: 0 0 6px rgba(245, 166, 35, 0.4);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    box-shadow: 0 0 14px rgba(245, 166, 35, 0.8), 0 0 24px rgba(245, 166, 35, 0.3);
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.foodSpeed {
+  background: #00d2ff;
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+  animation: speedPulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes speedPulse {
+  from {
+    box-shadow: 0 0 6px rgba(0, 210, 255, 0.4);
+  }
+  to {
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: repeat(20, 16px);
+    grid-template-rows: repeat(20, 16px);
+    background-size: 16px 16px;
+    background-position: 8px 8px;
+  }
+
+  .cell {
+    width: 16px;
+    height: 16px;
+  }
+
+  .food {
+    width: 10px;
+    height: 10px;
+  }
+}

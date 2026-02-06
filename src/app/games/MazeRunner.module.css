@@ -1,0 +1,33 @@
+/* ── Game Area ──────────────────────────────────────────── */
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md) 0 var(--space-sm);
+  gap: var(--space-xs);
+}
+
+.canvas {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  outline: none;
+  image-rendering: auto;
+}
+
+.controls {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
