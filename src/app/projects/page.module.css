@@ -171,15 +171,127 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Main Project Card */
+.mainProjectCard {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background var(--ease), border-color var(--ease);
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainProjectCard:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+}
+
+.mainProjectImageContainer {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.mainProjectImage {
+  object-fit: cover;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  background: var(--text-primary);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mainProjectContent {
+  padding: var(--space-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainProjectTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.mainProjectDescription {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  margin-bottom: auto;
+  flex: 1;
+}
+
+.mainProjectMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.mainProjectDate {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.mainProjectTags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .mainProjectImageContainer {
+    height: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .mainProjectImageContainer {
+    height: 180px;
   }
 }

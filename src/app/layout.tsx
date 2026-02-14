@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
+import DotGrid from "@/components/DotGrid";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -41,6 +42,24 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <DotGrid
+          dotSize={3}
+          gap={20}
+          proximity={180}
+          sizeScale={0.7}
+          baseColorVar="--dot-base"
+          activeColorVar="--dot-active"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: 0,
+            opacity: 0.3,
+            pointerEvents: "none",
+          }}
+        />
         <ConvexClientProvider>
           <Nav />
           <div
@@ -49,6 +68,8 @@ export default function RootLayout({
               margin: "0 auto",
               padding: "0 var(--space-md)",
               paddingTop: "calc(56px + 2px + var(--space-lg))",
+              position: "relative",
+              zIndex: 1,
             }}
           >
             {children}
