@@ -1,0 +1,149 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+}
+
+.playground {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  touch-action: none;
+  user-select: none;
+}
+
+.gridContainer {
+  position: relative;
+  overflow: visible;
+  cursor: default;
+}
+
+.gridLines {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+}
+
+.gridCell {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--ease);
+}
+
+.piece {
+  position: absolute;
+  cursor: grab;
+  transition: filter var(--ease-fast);
+}
+
+.piece:active {
+  cursor: grabbing;
+}
+
+.pieceDragging {
+  z-index: 10;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.block {
+  position: absolute;
+  border-radius: 3px;
+}
+
+.connector {
+  position: absolute;
+  border-radius: 2px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sidebarBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: border-color var(--ease-fast), color var(--ease-fast), background var(--ease-fast);
+}
+
+.sidebarBox:hover {
+  border-color: var(--border-hover);
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+}
+
+.sidebarLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.message {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+  transition: color var(--ease);
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--ease-fast);
+}
+
+.link .arrow {
+  display: inline-block;
+  transition: transform var(--ease-fast);
+}
+
+.link:hover {
+  color: var(--accent-hover);
+}
+
+.link:hover .arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: var(--space-md) 0;
+  }
+
+  .playground {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    flex-direction: row;
+  }
+}
