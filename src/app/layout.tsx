@@ -3,6 +3,7 @@ import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import DotGrid from "@/components/DotGrid";
+import ConsoleGreeting from "@/components/ConsoleGreeting";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -42,6 +43,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ConsoleGreeting />
         <DotGrid
           dotSize={3}
           gap={20}
