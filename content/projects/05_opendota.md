@@ -1,6 +1,6 @@
 ---
-title: "Dota 2 win prediction vs. the betting market"
-description: "A research pipeline and live paper-trading desk that tries to out-predict Polymarket on pro Dota 2 matches."
+title: "Dota 2 and CS2 win prediction vs. the betting market"
+description: "Prematch and in-game models for pro Dota 2 and CS2 matches, tested against Polymarket prices, plus a live paper-trading desk."
 image: "/projects/opendota.png"
 ---
 
@@ -24,4 +24,21 @@ The most promising and underexplored opportunities are prop bets, since their pr
 
 To test strategies live without risking money, I built a paper-trading desk. A FastAPI backend polls the Steam and OpenDota live feeds and Polymarket order books, matches markets to the right map in a series, and runs several strategies against a SQLite paper book: objective-based entries, market-momentum entries, and following wallets that historically traded well. A React/Vite dashboard shows the live desk, pregame predictions, model registry and trade history.
 
-Tech stack: Python, CatBoost, PyTorch, pandas/Parquet, FastAPI, SQLite, React 19 + TypeScript + Vite. Data comes from the OpenDota, Steam, STRATZ and Polymarket APIs.
+After Dota I wanted to see how much of this carries over to another game, so I built the same kind of pregame model for **CS2**. The data is public match records: matches, maps, round scores and tournament rosters since 2016. Ratings are only updated after a match ends, in start-time order, so nothing from the future gets into a prediction. There are team Elo ratings on series wins, map wins and round share, player ratings on round share, and a team-per-map offset, because in CS a team can be much stronger on one map than on another. On top of that I added player TrueSkill and Kalman-filter ratings that also track how uncertain each rating is. CatBoost is refit every month on everything before that month, so all predictions from October 2025 on are out of sample.
+
+The uncertainty part helped the most. It cut series log loss from 0.581 to 0.575 over about 24k series, and the gain held on tier 1 matches too. Side-specific (CT/T) ratings gave a small gain on single maps and nothing on series.
+
+My first comparison with Polymarket used the last trade before the scheduled start. When a match started early, that price was sometimes already in-play, so I switched to the price 2 minutes before the actual start. On 8,350 series:
+
+| | Matches | Polymarket | Model |
+|---|---|---|---|
+| All series | 8,350 | 0.594 | 0.587 |
+| Tier 1 | 1,371 | 0.628 | 0.634 |
+| Over $20k volume | 3,979 | 0.637 | 0.652 |
+| Under $5k volume | 1,817 | 0.538 | 0.483 |
+
+(log loss, lower is better)
+
+On tier 1 and high-volume matches the market is still better. The big gain on small markets is the same thing that looked promising in Dota, and there it turned out to be stale prices. I haven't checked it against real order books for CS2 yet, so I don't count it as an edge.
+
+Tech stack: Python, CatBoost, PyTorch, pandas/Parquet, FastAPI, SQLite, React 19 + TypeScript + Vite. Data comes from the OpenDota, Steam, STRATZ and Polymarket APIs, plus public CS2 match records.
